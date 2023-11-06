@@ -55,3 +55,54 @@ function playRound(playerSelectionDetailsArray, computerSelection) {
     return [winner, message];
   }
 }
+
+const MAX_GAME_ROUNDS=3;
+let newGame=true;
+
+let gameRound=1;
+let playerWins=0;
+let computerWins=0;
+
+function resetGame() {
+  gameRound=1;
+  playerWins=0;
+  computerWins=0;
+}
+
+function game() {
+
+  if(newGame) resetGame();
+
+  for(let i=0;i<5;i++) {
+    newGame=false;
+
+    const playerChoice = getPlayerChoice();
+    const computerChoice = getComputerChoice();
+
+    const result = playRound(playerChoice, computerChoice);
+    const winner = result[0];
+    const message = result[1];
+
+    if(!winner) {
+      console.log(message);
+      game();
+    }
+
+    if(winner=='computer') computerWins++;
+
+    if(winner=='player') playerWins++;
+
+    console.log(message);
+
+    if(gameRound==MAX_GAME_ROUNDS) break;  
+    gameRound++;
+  }
+
+  newGame=true;
+  const winnerAnnouncement = 
+    playerWins === computerWins ? `What a match, It's a tie!!! Try Again!!` :
+    playerWins > computerWins ? `Congrats!! You won the GAME!!!` :
+    `Oopsy, Computer won the game, better luck next time!!`;
+
+    return `Game Over \nComputer Points: ${computerWins} \nPlayer Points: ${playerWins} \n${winnerAnnouncement}`;
+}
