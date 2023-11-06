@@ -56,7 +56,7 @@ function playRound(playerSelectionDetailsArray, computerSelection) {
   }
 }
 
-const MAX_GAME_ROUNDS=3;
+const MAX_GAME_ROUNDS=5;
 let newGame=true;
 
 let gameRound=1;
