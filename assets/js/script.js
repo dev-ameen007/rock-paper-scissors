@@ -106,3 +106,5 @@ function game() {
 
     return `Game Over \nComputer Points: ${computerWins} \nPlayer Points: ${playerWins} \n${winnerAnnouncement}`;
 }
+
+cl(game());
