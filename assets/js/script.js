@@ -1,4 +1,4 @@
-// Shortcut to console.log(), simply use cl()
+// This function is a shortcut for console.log()
 function cl(content) {
   console.log(content);
 }
@@ -15,10 +15,10 @@ function getComputerChoice() {
 function getPlayerChoice() {
 
   let playerChoice;
-  let notFirstPrompt = false;
+  let isFirstPrompt = false;
 
   do {
-    if(notFirstPrompt) alert(`Invalid input '${playerChoice}'.\nPlease enter any of the following 'Rock', 'Paper', or 'Scissor'.`);
+    if(isFirstPrompt) alert(`Invalid input '${playerChoice}'.\nPlease enter any of the following 'Rock', 'Paper', or 'Scissor'.`);
 
     playerChoice = prompt(`Rock, paper, or scissor. What's your choice?`);
 
@@ -28,7 +28,7 @@ function getPlayerChoice() {
     }
 
     playerChoice = playerChoice.toLowerCase();
-    notFirstPrompt = true;
+    isFirstPrompt = true;
   } while(!choices.includes(playerChoice));
 
   return playerChoice;
@@ -45,7 +45,7 @@ function playRound(playerSelection, computerSelection) {
       break;
     // Case where both players made the same choice
     case playerSelection === computerSelection:
-      message = `Whoooo!! Both choose ${computerSelection}, It's a tie!!`;
+      message = `Whoooo!! Both chose ${computerSelection}, It's a tie!!`;
       break;
     // Cases where the computer wins  
     case playerSelection === 'rock' && computerSelection === 'paper' || 
